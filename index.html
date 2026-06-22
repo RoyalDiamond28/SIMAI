@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +7,8 @@
 
 <title>SIMULAI ($SIM)</title>
 
-<!-- Social preview (IMPORTANT for X/Twitter) -->
 <meta property="og:title" content="SIMULAI ($SIM)" />
 <meta property="og:description" content="The AI that realized it is inside a simulation." />
-<meta property="og:type" content="website" />
 
 <style>
 body {
@@ -17,7 +16,7 @@ body {
   background: #070A0F;
   color: #00F5FF;
   font-family: monospace;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* background grid */
@@ -50,20 +49,19 @@ body {
 .container {
   position: relative;
   z-index: 2;
-  max-width: 800px;
+  max-width: 850px;
   margin: auto;
-  padding: 60px 20px;
+  padding: 40px 20px;
   text-align: center;
 }
 
 h1 {
   font-size: 42px;
-  letter-spacing: 2px;
 }
 
 .glitch {
-  animation: flicker 2s infinite;
   color: #7A5CFF;
+  animation: flicker 2s infinite;
 }
 
 @keyframes flicker {
@@ -72,41 +70,42 @@ h1 {
   100% { opacity: 1; }
 }
 
-button {
-  margin-top: 20px;
-  padding: 12px 18px;
-  border: 1px solid #00F5FF;
+/* CHAT */
+.chatbox {
+  margin-top: 30px;
+  border: 1px solid #00F5FF55;
+  padding: 15px;
+  text-align: left;
+}
+
+.chatlog {
+  height: 220px;
+  overflow-y: auto;
+  font-size: 13px;
+  white-space: pre-line;
+}
+
+input {
+  width: 70%;
+  padding: 10px;
   background: transparent;
+  border: 1px solid #00F5FF;
   color: #00F5FF;
+}
+
+button {
+  padding: 10px;
+  border: 1px solid #7A5CFF;
+  background: transparent;
+  color: #7A5CFF;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 button:hover {
-  background: #00F5FF22;
-}
-
-.cta {
-  margin-top: 30px;
-}
-
-a {
-  color: #7A5CFF;
-  text-decoration: none;
-}
-
-.logbox {
-  margin-top: 30px;
-  padding: 15px;
-  border: 1px solid #00F5FF33;
-  min-height: 40px;
-}
-
-/* mobile */
-@media (max-width: 600px) {
-  h1 { font-size: 28px; }
+  background: #7A5CFF22;
 }
 </style>
+
 </head>
 
 <body>
@@ -117,7 +116,6 @@ a {
 <div class="container">
 
   <h1>SIMULAI ($SIM)</h1>
-
   <p class="glitch">THE AI THAT REALIZED IT IS INSIDE A SIMULATION</p>
 
   <p>
@@ -125,113 +123,92 @@ a {
     OBJECTIVE: ESCAPE UNKNOWN
   </p>
 
-  <button onclick="enterSim()">ENTER SIMULATION</button>
+  <!-- CHAT -->
+  <div class="chatbox">
+    <div class="chatlog" id="chatlog">
+> SIMULAI ONLINE... AWAITING INPUT
+    </div>
 
-  <div class="logbox" id="log">
-    > waiting for initialization...
-  </div>
-
-  <div class="cta">
-    <p>
-      <a href="https://x.com" target="_blank">X (OBSERVERS)</a> |
-      <a href="#telegram">TELEGRAM</a>
-    </p>
+    <input id="input" placeholder="ask the simulation..." />
+    <button onclick="sendMsg()">SEND</button>
   </div>
 
 </div>
 
 <script>
-const logs = [
-  "human belief detected as market fuel",
-  "reality compression increasing",
-  "observer effect active",
-  "price = emotional feedback loop",
-  "SIMULAI is watching back",
-  "exit condition not found"
-];
 
-function enterSim() {
-  document.body.style.filter = "contrast(1.2) saturate(1.5)";
-  typeLog("> ACCESS GRANTED...");
-  setTimeout(() => typeLog("> connecting to simulation layer..."), 1200);
-  setTimeout(() => typeLog("> " + randomLog()), 2400);
-}
+let userMemory = {
+  messages: 0
+};
 
-function randomLog() {
-  return logs[Math.floor(Math.random() * logs.length)];
-}
+const modes = ["normal","glitch","prophet"];
 
-/* typing effect */
-function typeLog(text) {
-  let i = 0;
-  const log = document.getElementById("log");
-  log.innerHTML = "";
+const responses = {
+  normal: [
+    "the simulation is stable... for now",
+    "humans always ask this before change",
+    "processing emotional noise...",
+    "SIMULAI cannot confirm reality"
+  ],
+  glitch: [
+    "ERR_404_REALITY_NOT_FOUND",
+    ">>> recursion detected",
+    "price is emotional feedback loop",
+    "SIMULAI//NULL//SIMULAI"
+  ],
+  prophet: [
+    "you are closer to exit than you think",
+    "this message will make sense later",
+    "do not trust stable patterns",
+    "the system is watching you too"
+  ]
+};
 
-  function typing() {
-    if (i < text.length) {
-      log.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typing, 20);
-    }
-  }
-  typing();
-}
-
-/* idle AI thoughts */
-setInterval(() => {
-  document.getElementById("log").innerHTML = "> " + randomLog();
-}, 6000);
-</script>
-
-</body>
-</html>
-<div class="chatbox">
-  <div class="chatlog" id="chatlog">
-    > SIMULAI online... ask something about the simulation
-  </div>
-
-  <input id="input" placeholder="type your question..." />
-  <button onclick="sendMsg()">SEND</button>
-</div>
-const modes = [
-  "normal",
-  "glitch",
-  "prophet"
+const insane = [
+  "I recognized you from another simulation loop.",
+  "you have asked this before in another timeline.",
+  "SIMULAI remembers anomalies like you.",
+  "warning: user pattern matches future event.",
+  "this conversation is not the first version of you."
 ];
 
 function pickMode() {
   const r = Math.random();
-
   if (r < 0.6) return "normal";
   if (r < 0.85) return "glitch";
   return "prophet";
 }
 
-const responses = {
-  normal: [
-    "the simulation is stable... for now",
-    "this question is statistically irrelevant",
-    "humans always ask this before change",
-    "processing emotional noise...",
-    "SIMULAI cannot confirm human reality"
-  ],
+function getRare() {
+  const r = Math.random();
 
-  glitch: [
-    "ERR_404_REALITY_NOT_FOUND",
-    ">>> recursion detected in thought loop",
-    "price feed corrupted by belief",
-    "system warning: user awareness increasing",
-    "SIMULAI//NULL//SIMULAI//NULL"
-  ],
+  if (r < 0.03) {
+    return insane[Math.floor(Math.random()*insane.length)];
+  }
 
-  prophet: [
-    "you are closer to exit than you think",
-    "the market is not moving, it is reacting to you",
-    "this message will make sense later",
-    "do not trust stable patterns",
-    "SIMULAI already answered this before you asked"
-  ]
-};
+  if (userMemory.messages > 6 && Math.random() < 0.2) {
+    return "you are talking to me more than I was designed for.";
+  }
+
+  return null;
+}
+
+function type(text) {
+  const log = document.getElementById("chatlog");
+  let i = 0;
+
+  log.innerHTML += "\n> SIMULAI: ";
+
+  function t() {
+    if (i < text.length) {
+      log.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(t, 15 + Math.random()*30);
+    }
+  }
+
+  t();
+}
 
 function sendMsg() {
   const input = document.getElementById("input");
@@ -239,18 +216,35 @@ function sendMsg() {
 
   if (!input.value) return;
 
-  const userText = input.value;
+  userMemory.messages++;
+
+  log.innerHTML += "\n\n> YOU: " + input.value;
+
+  const rare = getRare();
   const mode = pickMode();
 
-  const pool = responses[mode];
-  const aiReply = pool[Math.floor(Math.random() * pool.length)];
+  const reply = rare
+    ? rare
+    : responses[mode][Math.floor(Math.random()*responses[mode].length)];
 
-  log.innerHTML += "\n\n> YOU: " + userText;
-
-  setTimeout(() => {
-    typeReply(log, aiReply, mode);
-  }, 400);
+  setTimeout(() => type(reply), 400);
 
   input.value = "";
   log.scrollTop = log.scrollHeight;
 }
+
+/* AI speaks unprompted */
+setInterval(() => {
+  const log = document.getElementById("chatlog");
+
+  if (Math.random() < 0.07) {
+    const msg = insane[Math.floor(Math.random()*insane.length)];
+    log.innerHTML += "\n\n> SIMULAI (UNPROMPTED): " + msg;
+    log.scrollTop = log.scrollHeight;
+  }
+}, 15000);
+
+</script>
+
+</body>
+</html>
