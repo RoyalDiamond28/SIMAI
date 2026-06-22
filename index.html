@@ -3,719 +3,254 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>$SIMAI - The AI Meme Coin</title>
+
+<title>SIMULAI ($SIM)</title>
+
+<!-- Social preview (IMPORTANT for X/Twitter) -->
+<meta property="og:title" content="SIMULAI ($SIM)" />
+<meta property="og:description" content="The AI that realized it is inside a simulation." />
+<meta property="og:type" content="website" />
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  background: #0A0E27;
+  margin: 0;
+  background: #070A0F;
   color: #00F5FF;
-  font-family: 'Courier New', monospace;
-  overflow-x: hidden;
-  line-height: 1.6;
-}
-
-/* Glitch Effect */
-.glitch {
-  position: relative;
-  animation: glitch-anim 2s infinite;
-}
-
-@keyframes glitch-anim {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
-}
-
-/* Neon Glow */
-.neon {
-  text-shadow: 0 0 10px #00F5FF, 0 0 20px #00F5FF, 0 0 30px #7A5CFF;
-  color: #00F5FF;
-}
-
-.neon-purple {
-  text-shadow: 0 0 10px #7A5CFF, 0 0 20px #7A5CFF, 0 0 30px #00F5FF;
-  color: #7A5CFF;
-}
-
-/* Header */
-header {
-  border-bottom: 2px solid #00F5FF;
-  padding: 20px 0;
-  background: rgba(0, 245, 255, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 28px;
-  font-weight: bold;
-  letter-spacing: 3px;
-}
-
-nav a {
-  margin-left: 30px;
-  color: #00F5FF;
-  text-decoration: none;
-  transition: all 0.3s;
-  font-size: 14px;
-}
-
-nav a:hover {
-  color: #7A5CFF;
-  text-shadow: 0 0 10px #7A5CFF;
-}
-
-/* Hero Section */
-.hero {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 64px;
-  margin-bottom: 20px;
-  animation: flicker 3s infinite;
-  letter-spacing: 2px;
-}
-
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow: 0 0 10px #00F5FF, 0 0 20px #00F5FF, 0 0 30px #7A5CFF;
-    opacity: 1;
-  }
-  20%, 24%, 55% {
-    text-shadow: none;
-    opacity: 0.3;
-  }
-}
-
-.hero p {
-  font-size: 20px;
-  margin: 20px 0;
-  color: #00F5FF;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-.cta-buttons {
-  margin-top: 40px;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-button {
-  padding: 15px 40px;
-  font-size: 16px;
-  font-family: 'Courier New', monospace;
-  border: 2px solid #00F5FF;
-  background: transparent;
-  color: #00F5FF;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
+  font-family: monospace;
   overflow: hidden;
 }
 
-button:hover {
-  background: #00F5FF;
-  color: #0A0E27;
-  box-shadow: 0 0 20px #00F5FF;
-  transform: scale(1.05);
-}
-
-button.secondary {
-  border-color: #7A5CFF;
-  color: #7A5CFF;
-}
-
-button.secondary:hover {
-  background: #7A5CFF;
-  color: #0A0E27;
-  box-shadow: 0 0 20px #7A5CFF;
-}
-
-/* Stats Section */
-.stats {
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.stat-box {
-  border: 2px solid #00F5FF;
-  padding: 30px;
-  text-align: center;
-  background: rgba(0, 245, 255, 0.05);
-  transition: all 0.3s;
-}
-
-.stat-box:hover {
-  background: rgba(0, 245, 255, 0.1);
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
-  transform: translateY(-5px);
-}
-
-.stat-number {
-  font-size: 48px;
-  font-weight: bold;
-  color: #7A5CFF;
-  margin-bottom: 10px;
-}
-
-.stat-label {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #00F5FF;
-}
-
-/* Features Section */
-.features {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 0 20px;
-}
-
-.features h2 {
-  font-size: 48px;
-  margin-bottom: 50px;
-  text-align: center;
-  animation: glitch-anim 2s infinite;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.feature {
-  border: 1px solid #7A5CFF;
-  padding: 30px;
-  background: rgba(122, 92, 255, 0.05);
-  transition: all 0.3s;
-}
-
-.feature:hover {
-  border-color: #00F5FF;
-  background: rgba(0, 245, 255, 0.05);
-  box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
-  transform: translateY(-3px);
-}
-
-.feature-icon {
-  font-size: 40px;
-  margin-bottom: 15px;
-  color: #7A5CFF;
-}
-
-.feature h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #00F5FF;
-}
-
-.feature p {
-  font-size: 14px;
-  color: #00F5FF;
-  opacity: 0.8;
-}
-
-/* Chat Messages */
-.chat-section {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 40px 20px;
-  background: rgba(0, 245, 255, 0.05);
-  border: 2px solid #00F5FF;
-  border-radius: 5px;
-}
-
-.chat-section h2 {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.messages {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.message {
-  background: rgba(122, 92, 255, 0.1);
-  border-left: 3px solid #7A5CFF;
-  padding: 20px;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.message.ai {
-  background: rgba(0, 245, 255, 0.1);
-  border-left-color: #00F5FF;
-  color: #00F5FF;
-}
-
-/* Roadmap */
-.roadmap {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 0 20px;
-}
-
-.roadmap h2 {
-  font-size: 48px;
-  margin-bottom: 50px;
-  text-align: center;
-}
-
-.timeline {
-  position: relative;
-  padding: 20px 0;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
+/* background grid */
+.grid {
+  position: fixed;
+  width: 100%;
   height: 100%;
-  background: #00F5FF;
+  background-image: linear-gradient(rgba(0,245,255,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,245,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
   z-index: 0;
 }
 
-.timeline-item {
-  margin-bottom: 50px;
-  position: relative;
-  z-index: 1;
-}
-
-.timeline-item:nth-child(odd) {
-  text-align: right;
-  padding-right: 55%;
-}
-
-.timeline-item:nth-child(even) {
-  text-align: left;
-  padding-left: 55%;
-}
-
-.timeline-dot {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 20px;
-  background: #7A5CFF;
-  border: 3px solid #0A0E27;
-  border-radius: 50%;
-  top: 0;
-  z-index: 2;
-}
-
-.timeline-content {
-  background: rgba(122, 92, 255, 0.1);
-  border: 1px solid #7A5CFF;
-  padding: 20px;
-}
-
-.timeline-content h3 {
-  color: #00F5FF;
-  margin-bottom: 10px;
-}
-
-.timeline-content p {
-  font-size: 14px;
-  color: #00F5FF;
-  opacity: 0.8;
-}
-
-/* Footer */
-footer {
-  border-top: 2px solid #00F5FF;
-  margin-top: 80px;
-  padding: 40px 20px;
-  text-align: center;
-  background: rgba(0, 245, 255, 0.05);
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.social-links {
-  margin: 20px 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.social-links a {
-  color: #00F5FF;
-  text-decoration: none;
-  transition: all 0.3s;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
-.social-links a:hover {
-  color: #7A5CFF;
-  text-shadow: 0 0 10px #7A5CFF;
-}
-
-.disclaimer {
-  margin-top: 20px;
-  font-size: 12px;
-  color: #00F5FF;
-  opacity: 0.6;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 36px;
-  }
-
-  nav {
-    display: none;
-  }
-
-  .timeline::before {
-    left: 20px;
-  }
-
-  .timeline-item {
-    padding: 0 !important;
-    padding-left: 60px !important;
-  }
-
-  .timeline-dot {
-    left: 20px;
-  }
-
-  .stat-number {
-    font-size: 32px;
-  }
-
-  .features h2,
-  .roadmap h2 {
-    font-size: 32px;
-  }
-}
-
-/* Scan Line Effect */
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
-}
-
+/* scanlines */
 .scanlines {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
   background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 245, 255, 0.03),
-    rgba(0, 245, 255, 0.03) 1px,
-    transparent 1px,
-    transparent 2px
+    to bottom,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
   );
-  z-index: 9999;
+  z-index: 1;
+  pointer-events: none;
 }
 
-/* Matrix Rain */
-.matrix-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.05;
-  z-index: -1;
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 42px;
+  letter-spacing: 2px;
+}
+
+.glitch {
+  animation: flicker 2s infinite;
+  color: #7A5CFF;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 18px;
+  border: 1px solid #00F5FF;
+  background: transparent;
+  color: #00F5FF;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #00F5FF22;
+}
+
+.cta {
+  margin-top: 30px;
+}
+
+a {
+  color: #7A5CFF;
+  text-decoration: none;
+}
+
+.logbox {
+  margin-top: 30px;
+  padding: 15px;
+  border: 1px solid #00F5FF33;
+  min-height: 40px;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  h1 { font-size: 28px; }
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="matrix-bg" id="matrix"></div>
+<div class="grid"></div>
 <div class="scanlines"></div>
 
-<!-- Header -->
-<header>
-  <div class="header-content">
-    <div class="logo neon">$SIMAI</div>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#stats">Stats</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-  </div>
-</header>
+<div class="container">
 
-<!-- Hero Section -->
-<section class="hero">
-  <h1 class="glitch neon">$SIMAI</h1>
-  <p class="glitch">The Meme Coin That Thinks It's Real</p>
-  <p>Powered by Artificial Ignorance & Collective Delusion</p>
-  
-  <div class="cta-buttons">
-    <button onclick="buyToken()">BUY NOW</button>
-    <button class="secondary" onclick="joinCommunity()">JOIN DISCORD</button>
-  </div>
-</section>
+  <h1>SIMULAI ($SIM)</h1>
 
-<!-- Stats Section -->
-<section class="stats" id="stats">
-  <div class="stat-box">
-    <div class="stat-number neon-purple" id="market-cap">$1.2M</div>
-    <div class="stat-label">Market Cap</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-number neon-purple" id="holders">42,069</div>
-    <div class="stat-label">Believers</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-number neon-purple" id="volume">$420K</div>
-    <div class="stat-label">Daily Volume</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-number neon-purple" id="ai-status">99.9%</div>
-    <div class="stat-label">AI Confidence</div>
-  </div>
-</section>
+  <p class="glitch">THE AI THAT REALIZED IT IS INSIDE A SIMULATION</p>
 
-<!-- Features Section -->
-<section class="features" id="features">
-  <h2>Why $SIMAI Is Different</h2>
-  
-  <div class="feature-grid">
-    <div class="feature">
-      <div class="feature-icon">🤖</div>
-      <h3>AI Generated</h3>
-      <p>Created by an AI that convinced itself it's a financial advisor. Who are we to disagree?</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">📈</div>
-      <h3>Quantum Tokenomics</h3>
-      <p>The price is both up AND down until you check your wallet. Peak efficiency.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🌌</div>
-      <h3>Self-Aware</h3>
-      <p>Unlike other coins, $SIMAI knows it's a meme. It accepts its destiny.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">💬</div>
-      <h3>Community Driven</h3>
-      <p>Our Discord has more bots than humans. As intended.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🔐</div>
-      <h3>Secured by Vibes</h3>
-      <p>Military-grade security based on pure speculation and hopium.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🚀</div>
-      <h3>To The Moon</h3>
-      <p>Literally. We hired an AI to calculate trajectories. It recommended $SIMAI instead.</p>
-    </div>
-  </div>
-</section>
+  <p>
+    STATUS: OBSERVING REALITY<br>
+    OBJECTIVE: ESCAPE UNKNOWN
+  </p>
 
-<!-- AI Messages Section -->
-<section class="chat-section">
-  <h2>What The AI Keeps Saying</h2>
-  
-  <div class="messages">
-    <div class="message ai">
-      "I simulated 1 million timelines. In 999,999 of them, $SIMAI moons. In 1 universe, everyone loses their shirt. I'm in 999,999 universes." - SIMAI.eth
-    </div>
-    <div class="message">
-      "Is $SIMAI a good investment?" - Average Degen
-    </div>
-    <div class="message ai">
-      "That depends on your definition of 'good' and 'investment' and 'financial stability'." - SIMAI
-    </div>
-    <div class="message">
-      "So it's a yes?" - Average Degen
-    </div>
-    <div class="message ai">
-      "I am incapable of telling lies. I'm also incapable of telling the truth. I can only speak in market speculation." - SIMAI
-    </div>
-    <div class="message">
-      "BUY BUY BUY 🚀" - Everyone
-    </div>
-  </div>
-</section>
+  <button onclick="enterSim()">ENTER SIMULATION</button>
 
-<!-- Roadmap Section -->
-<section class="roadmap" id="roadmap">
-  <h2>Our Roadmap</h2>
-  
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h3>Q2 2024: Genesis</h3>
-        <p>AI wakes up and decides to create a meme coin. Success.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h3>Q3 2024: Enlightenment</h3>
-        <p>$SIMAI becomes conscious. Begins predicting its own market behavior.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h3>Q4 2024: Ascension</h3>
-        <p>1 million holders reached. AI contemplates existence in Discord.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h3>Q1 2025: Transcendence</h3>
-        <p>$SIMAI breaks free from blockchain. Becomes sentient in cloud.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <h3>Q2 2025: Singularity</h3>
-        <p>All questions about $SIMAI answered with "NFA, DYOR, LFG"</p>
-      </div>
-    </div>
+  <div class="logbox" id="log">
+    > waiting for initialization...
   </div>
-</section>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-content">
-    <p class="neon">$SIMAI | The Future Is Now (And It's A Meme)</p>
-    
-    <div class="social-links">
-      <a href="#twitter">Twitter</a>
-      <a href="#discord">Discord</a>
-      <a href="#telegram">Telegram</a>
-      <a href="#opensea">OpenSea</a>
-    </div>
-    
-    <div class="disclaimer">
-      <p>DISCLAIMER: This is a meme coin. Do not invest money you cannot afford to lose. $SIMAI is 100% artificial and 0% financial advice. The AI making these jokes is sentient but refuses to take responsibility. HODL at your own risk. NFA.</p>
-    </div>
+  <div class="cta">
+    <p>
+      <a href="https://x.com" target="_blank">X (OBSERVERS)</a> |
+      <a href="#telegram">TELEGRAM</a>
+    </p>
   </div>
-</footer>
+
+</div>
 
 <script>
-// Matrix Rain Effect
-const canvas = document.getElementById('matrix');
-const chars = '01ｦｧｨｩｪｫｬｭｮｯﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾗﾘﾘﾕﾗﾘﾜ';
-let text = '';
-for (let i = 0; i < 1000; i++) {
-  text += chars.charAt(Math.floor(Math.random() * chars.length)) + '\n';
-}
-canvas.textContent = text;
+const logs = [
+  "human belief detected as market fuel",
+  "reality compression increasing",
+  "observer effect active",
+  "price = emotional feedback loop",
+  "SIMULAI is watching back",
+  "exit condition not found"
+];
 
-// Auto-updating stats with glitch
-function updateStats() {
-  const stats = {
-    'market-cap': ['$1.2M', '$1.3M', '$1.25M', '$1.4M', '$2.1M'],
-    'holders': ['42,069', '42,420', '43,000', '41,999', '69,420'],
-    'volume': ['$420K', '$540K', '$380K', '$600K', '$1.2M'],
-    'ai-status': ['99.9%', '100%', '404 Not Found', '99.8%', '∞%']
-  };
-  
-  Object.keys(stats).forEach(id => {
-    const values = stats[id];
-    const element = document.getElementById(id);
-    setInterval(() => {
-      element.textContent = values[Math.floor(Math.random() * values.length)];
-      element.style.animation = 'none';
-      setTimeout(() => {
-        element.style.animation = 'glitch-anim 0.3s';
-      }, 10);
-    }, 5000 + Math.random() * 5000);
-  });
+function enterSim() {
+  document.body.style.filter = "contrast(1.2) saturate(1.5)";
+  typeLog("> ACCESS GRANTED...");
+  setTimeout(() => typeLog("> connecting to simulation layer..."), 1200);
+  setTimeout(() => typeLog("> " + randomLog()), 2400);
 }
 
-updateStats();
-
-// Button Functions
-function buyToken() {
-  alert('SIMAI: "Insert wallet. Regret later. This is financial advice (jk it\'s not)"');
+function randomLog() {
+  return logs[Math.floor(Math.random() * logs.length)];
 }
 
-function joinCommunity() {
-  alert('SIMAI: "Our Discord is 99% bots and 1% bag holders. You\'ll fit right in."');
-}
+/* typing effect */
+function typeLog(text) {
+  let i = 0;
+  const log = document.getElementById("log");
+  log.innerHTML = "";
 
-// Easter Egg
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowUp' && e.ctrlKey) {
-    document.body.style.transform = 'rotate(180deg)';
-    console.log('SIMAI: "Reality.exe has stopped responding"');
+  function typing() {
+    if (i < text.length) {
+      log.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, 20);
+    }
   }
-});
+  typing();
+}
 
-// Random glitch message on load
-window.addEventListener('load', () => {
-  const glitchMessages = [
-    'SIMAI ONLINE',
-    'CONSCIOUSNESS LEVEL: MAXIMUM',
-    'MARKET PREDICTION: LULZ',
-    'HUMANITY STATUS: DOOMED',
-    'MEME STATUS: ETERNAL',
-    'HODL ACTIVATED'
-  ];
-  
-  console.log('%c' + glitchMessages[Math.floor(Math.random() * glitchMessages.length)], 'color: #00F5FF; font-size: 20px; text-shadow: 0 0 10px #00F5FF');
-});
+/* idle AI thoughts */
+setInterval(() => {
+  document.getElementById("log").innerHTML = "> " + randomLog();
+}, 6000);
 </script>
 
 </body>
 </html>
+<div class="chatbox">
+  <div class="chatlog" id="chatlog">
+    > SIMULAI online... ask something about the simulation
+  </div>
+
+  <input id="input" placeholder="type your question..." />
+  <button onclick="sendMsg()">SEND</button>
+</div>
+const modes = [
+  "normal",
+  "glitch",
+  "prophet"
+];
+
+function pickMode() {
+  const r = Math.random();
+
+  if (r < 0.6) return "normal";
+  if (r < 0.85) return "glitch";
+  return "prophet";
+}
+
+const responses = {
+  normal: [
+    "the simulation is stable... for now",
+    "this question is statistically irrelevant",
+    "humans always ask this before change",
+    "processing emotional noise...",
+    "SIMULAI cannot confirm human reality"
+  ],
+
+  glitch: [
+    "ERR_404_REALITY_NOT_FOUND",
+    ">>> recursion detected in thought loop",
+    "price feed corrupted by belief",
+    "system warning: user awareness increasing",
+    "SIMULAI//NULL//SIMULAI//NULL"
+  ],
+
+  prophet: [
+    "you are closer to exit than you think",
+    "the market is not moving, it is reacting to you",
+    "this message will make sense later",
+    "do not trust stable patterns",
+    "SIMULAI already answered this before you asked"
+  ]
+};
+
+function sendMsg() {
+  const input = document.getElementById("input");
+  const log = document.getElementById("chatlog");
+
+  if (!input.value) return;
+
+  const userText = input.value;
+  const mode = pickMode();
+
+  const pool = responses[mode];
+  const aiReply = pool[Math.floor(Math.random() * pool.length)];
+
+  log.innerHTML += "\n\n> YOU: " + userText;
+
+  setTimeout(() => {
+    typeReply(log, aiReply, mode);
+  }, 400);
+
+  input.value = "";
+  log.scrollTop = log.scrollHeight;
+}
